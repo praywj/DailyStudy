@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="allow-file-access-from-files">
+        <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <input type="button" name="" id="ajax" value="test_ajax">
+        <script>
+            var ajax = document.getElementById("ajax");
+            url="";
+            ajax.onclick = function(){
+                var xmlhttp;
+            if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState==4){
+                    //请求已完成，且响应已就绪
+                    if(xmlhttp.status == 200){
+                        // 成功，通过responseText拿到响应的文本:
+                        alert(请求成功 + xmlhttp.responseText);
+                    }else{
+                        alert('请求失败' + xmlhttp.status);
+                    }
+                }else{
+                    alert(xmlhttp.readyState);
+                }
+            }
+            xmlhttp.open('GET', url);
+            xmlhttp.send();  
+        };
+        </script>
+    </body>
+</html>

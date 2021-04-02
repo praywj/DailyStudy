@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+		window.onload = function(){
+			var div = document.getElementById("container");
+			div.style.color = "red";
+		}
+	</script>
+</head>
+<body>
+	<!-- 这是一个注释comment -->
+	<div id="container">这是一个元素节点</div>
+	<script>
+		// 1. 元素节点
+		var divnode = document.getElementById("container");
+		console.log(divnode.nodeName + "/" + divnode.nodeValue);
+		// 2. 属性节点
+		var attrnode = divnode.attributes[0];
+		console.log(attrnode.nodeName + "/" + attrnode.nodeValue);
+		// 3. 文本节点
+		var textnode = divnode.childNodes[0];
+		console.log(textnode.nodeName + "/" + textnode.nodeValue);
+		// 4. 注释节点  第一个子元素是空白元素是文本节点
+		var commentnode = document.body.childNodes[1];
+		console.log(commentnode.nodeName + "/" + commentnode.nodeValue);
+		// 5. 文档类型节点
+		console.log(document.doctype.nodeName + "/" + document.doctype.nodeValue);
+		// 6. 文档片段节点
+		var frag = document.createDocumentFragment();
+		console.log(frag.nodeName + "/" + frag.nodeValue);
+	</script>
+</body>
+</html>

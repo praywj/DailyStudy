@@ -1,0 +1,27 @@
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+process.stdin.resume();
+process.stdin.setEncoding('ascii');
+
+var input = "";
+var total;
+var goods = [{num:5,price:1}, {num:3,price:2}, {num:3,price:2}, {num:4,price:5}, {num:2,price:2}, {num:1,price:3}];
+
+process.stdin.on('data', function (data) {
+    input += data;
+});
+
+process.stdin.on('end', function () {
+    total = parseInt(input);
+    
+    var vis = [0, 0, 0, 0, 0, 0], sum=0;
+    for(var i=0;i<goods.length;i++){
+        if(vis[i]===0){
+            if(total>=goods[i].price){
+                total-=goods[i].price;
+                sum+=goods[i].num;
+                vis[i]=1;
+            }
+        }
+    }
+    console.log(sum);
+});

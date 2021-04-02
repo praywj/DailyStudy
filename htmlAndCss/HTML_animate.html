@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animate</title>
+    <style type="text/css">
+        #container{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            position: relative;
+            margin: 0 auto;
+        }
+        #animate{
+            width: 100px;
+            height: 100px;
+            background-color: #00aaff;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        function test_animate() {
+            let ani = document.getElementById("animate");
+            let pos = 0;
+            let timer = setInterval(frame, 5);
+            function frame() {
+                if(pos<400)
+                {
+                    pos += 2;
+                    ani.style.top = pos + "px";
+                    ani.style.left = pos + "px";
+                }else{
+                    clearInterval(timer);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <div id="animate">
+
+    </div>
+</div>
+<input type="button" value="开始动画" onclick="test_animate()">
+
+</body>
+</html>

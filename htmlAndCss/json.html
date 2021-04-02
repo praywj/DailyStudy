@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        
+        <h2>通过JSON创建对象</h2>
+        <p id="name">
+            first_name: <span id="fname"></span><br/>
+            last_name: <span id="lname"></span>
+        </p>
+    <script>
+        //Map和Set
+        var map = new Map([
+            ["WJ", 100],
+            ["CT", 100]
+        ]);
+        console.log(map.get("WJ"));
+        map.set("CCT", 101);
+        var set = new Set(["WJ", "CT"]);
+        set.add("CT");
+        map.forEach(function(key, index, arr){
+            console.log(key, index, arr);
+        });
+        set.forEach(function(key, index, arr){
+            console.log(key, index, arr);
+        });
+        var arr = new Array([1, 5, 1, 2, 3]);
+        console.log("ori_arr:");
+        for( x of arr){
+            console.log(x);
+        }
+        //数组去重
+        arr1 = [... new Set([1, 5, 1, 2, 3])];
+        console.log("set_arr1:");
+        for( x of arr1){
+            console.log(x);
+        }
+        //Set->Array
+        console.log(Array.from(new Set([1, 5, 1, 2, 3])));
+        //字符串去重
+        console.log([... new Set("abcad")].join(''));
+        //map->Array
+        console.log([... map]);
+        //Array->map
+        console.log(new Map([["aa", 1],["bb", 2]]))
+        //Map->Object
+        var obj = Object.create(null);
+        // map.forEach(function(key, index){
+        //     obj[index]=key;
+        // });
+        for([key, value] of map){
+            obj[key] = value;
+        }
+        console.log(obj);
+        // Object->Map
+        // var mapp = new Map(Object.entries(obj));
+        var mapp = new Map();
+        for(var key of Object.keys(obj)){
+            mapp.set(key, obj[key]);
+        }
+        console.log(mapp);
+
+        //Map->JSON
+        //1. key=string map->Object->JSON
+        var json = JSON.stringify(obj);
+        console.log(json);
+        // 2. key!=string Map->Array->JSON
+        var jsonn = JSON.stringify([... mapp])
+        console.log(jsonn);
+
+        //JSON->MAP
+        //1. JSON=string  JSON->Object->Map  objtomap(JSON.parse(jsonstr))
+        //2. JSOn=Array   new Map(JSON.parse(jsonarr))
+        
+        //先设置为字符串形式
+        var Json_str = '{"person":[' +
+                '{"first_name":"Wu", "last_name":"Jin"},' +
+                '{"first_name":"Chen", "last_name":"Tao"}]}';
+        var Json_obj = eval("(" + Json_str + ")");
+        console.log(Json_obj);
+        document.getElementById("fname").innerHTML = Json_obj.person[0].first_name;
+        document.getElementById("lname").innerHTML = Json_obj.person[0].last_name;
+        console.log(document.getElementById("name").innerHTML);
+        console.log(document.getElementById("name").innerText);
+    </script>
+    </body>
+</html>

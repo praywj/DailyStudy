@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM实例</title>
+    <script type="text/javascript">
+        function accesskey() {
+            //  设置快捷键获取焦点方式
+            document.getElementById('myfocus').accessKey="w";
+        }
+        function get_focus() {
+            document.getElementById('myfocus').focus();
+        }
+        function lose_focus() {
+            document.getElementById('myfocus').blur();
+        }
+        document.write("<h1>测试write向html输出文本</h1>");
+        function tagname() {
+            d = document.getElementById("testtagname");
+            list = d.getElementsByTagName("li");
+            for(let i=0; i<list.length; i++)
+            {
+                div = document.getElementById("appendChild");
+                child = document.createElement("p");
+                child.innerHTML = list[i].innerHTML;
+                div.appendChild(child);
+            }
+        }
+        function query() {
+            // 查找匹配指定的CSS选择器
+            let list = document.querySelectorAll("li.query");
+            for(let i=0; i<list.length; i++)
+            {
+                div = document.getElementById("appendChild");
+                child = document.createElement("p");
+                child.innerHTML = list[i].innerHTML;
+                div.appendChild(child);
+            }
+        }
+
+        function createDoc() {
+            let newDoc = document.open("text/html", "replace");
+            let txt = "<html><body>这是新创建的文档</body></html>";
+            newDoc.write(txt);
+            newDoc.close();
+        }
+
+        function get_form(){
+            let x = document.forms["form1"];
+            let text = "";
+            for(let i=0;i<x.length;i++){
+                text += x.elements[i].value + "<br />";
+            }
+            document.getElementById("get_form").innerHTML=text;
+        }
+    </script>
+</head>
+<body onload="accesskey()">
+<input type="text" id="myfocus" placeholder="test focus/blur"/>
+<br /><br />
+<input type="button" value="get_focus" onclick="get_focus()">
+<input type="button" value="lose_focus" onclick="lose_focus()">
+<br /><br />
+该文档的标题是：
+<script type="text/javascript">
+    document.write(document.title);
+</script>
+<br /><br />
+该文档的 URL 是：
+<script type="text/javascript">
+    document.write(document.URL);
+</script>
+
+<p>referrer 属性返回加载本文档的文档的 URL。</p>
+本文档的 referrer 是：
+<script type="text/javascript">
+    if(document.referrer)
+    {
+        document.write(document.referrer)
+    }
+    else
+    {
+        document.write("没找到");
+    }
+</script>
+<br /><br />
+本文档的域名是：
+<script type="text/javascript">
+    document.write(document.domain)
+</script>
+
+<ul id="testtagname">
+    <li class="query">苹果</li>
+    <li class="query">橘子</li>
+    <li class="query">葡萄</li>
+</ul>
+<input type="button" value="点击我" onclick="tagname()">
+<input type="button" value="querySelectorAll" onclick="query()">
+<div id="appendChild"></div>
+
+<input type="button" value="打开并写入一个新文档" onclick="createDoc()">
+<!--使用 document.forms 查找 HTML 元素-->
+<h1 style="color:red">使用 document.forms 查找 HTML 元素</h1>
+<form action="#" id="form1">
+    FisrtName: <input type="text" placeholder="WU" name="fname"> <br />
+    LastName:  <input type="text" placeholder="Jin" name="lname"> <br />
+    <input type="button" value="submit">
+</form>
+<p>单击“试一试”按钮，显示表单中每个元素的值。</p>
+<button onclick="get_form()">试一试</button>
+<p id="get_form"></p>
+</body>
+</html>

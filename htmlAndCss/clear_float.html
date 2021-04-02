@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>title是必须的标签</title>
+        <style type="text/css">
+            body{padding: 0; margin: 0;}
+            .container{height:200px; width: 50%; margin: 0 auto; margin-bottom: 50px; }
+            .left{float: left; height:100%; width: 100px; background-color: red;}
+            .right{float: right; height:100%; width: 100px; background-color:rosybrown;}
+            .center{height:100%; background-color: salmon; margin: 0 110px 0 110px;}
+
+            .left_1{position: absolute; height:200px; width: 100px; background-color: red; top:250px; left: 25%;}
+            .right_1{position: absolute; height:200px; width: 100px; background-color:rosybrown; top: 250px; right: 25%;}
+            .clearfix{*zoom: 1;}
+            .clearfix::after{display: block; content: "."; visibility: hidden; clear: both; height: 0;}
+            .left_2{float: left; height:100px; width: 100px; background-color: red;border: solid 1px black;}
+            .right_2{float: left; height:100px; width: 100px; background-color: red;border: solid 1px black;}
+            .center_2{width:100%;float: left; height:100px; background-color: greenyellow;border: solid 1px black;}
+            .test_flex{display: flex; height: 200px; background-color: grey; flex-direction: row; flex-wrap: wrap;}
+            .flex_sub{width: 100px;border: solid 1px red; margin-right: 20px;}
+            .flex_center{background-color: royalblue; margin-right: 20px; flex-grow: 2;}
+            .re_tran{
+                width:0;
+                border-bottom:10px solid #DD575C;
+                border-left:5.77px solid transparent;
+                border-right:5.77px solid transparent;
+             }
+        </style>
+    </head>
+    <body>
+            <div></div>
+            <div class="re_tran"></div>
+            <!-- 3.父元素添加overflow -->
+            <!-- <div style="overflow: hidden;"><div style="float: left; width: 30px; height: 30px; background-color: seagreen;"></div></div> -->
+            <div style="float: left; width: 30px; height: 30px; background-color: seagreen;"></div>
+            <!--1. <div style="clear: both;"></div> -->
+            <div class="container">  <!--2.添加clear: both;-->
+                <div class="left">
+
+                </div>
+                <div class="right">
+        
+                </div>
+                <div class="center">
+                    使用浮动
+                </div>
+                
+            </div>
+
+            <div class="container">
+                <div class="left_1"></div>
+                <div class="right_1"></div>
+                <div class="center">使用绝对定位</div>
+            </div>
+            <!-- 4.使用伪类 -->
+            <div class="clearfix" style="background-color: blanchedalmond;">
+                <div class="center_2">
+                    center
+                </div>
+                <div class="left_2">
+                    aa
+                </div>
+                <div class="right_2">
+                    bb
+                </div>
+                
+            </div>
+            <p>到底是怎么显示的</p>
+            <div class="test_flex">
+                <div class="flex_sub">1</div>
+                <div class="flex_center">2</div>
+                <div class="flex_sub">3</div>
+            </div>
+        <script src="js/createclass.js"></script>
+    </body>
+</html>

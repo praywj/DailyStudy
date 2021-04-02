@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .wp{height: 300px; width: 300px; border: 1px solid red;}
+            .wapadd1{position: relative;}
+            .wapadd2{line-height: 300px; text-align: center; font-size: 0px; }
+            .wapadd3{writing-mode: vertical-rl; text-align: center;}
+            .wapadd4{text-align: center;}
+            .wapadd5{display: table-cell; text-align: center; vertical-align: middle;} /*boxadd7 使用css新特性将普通元素变为table*/
+            .wapadd6{display: flex; justify-content: center; align-items: center;}  /*使用flex*/
+            .wapadd7{display: grid;}
+            .wm{display:inline-block; writing-mode: horizontal-tb; text-align: center; width: 100%;}
+            .box{background-color: royalblue;}
+            .size{height: 100px; width: 100px;}
+            .boxadd1{position: absolute; left:50%; top:50%; margin-left: -50px; margin-top: -50px;}  /*wapadd1+size 使用绝对定位+margin负值*/
+            .boxadd2{position: absolute; top:0; left:0; right:0; bottom:0; margin: auto;}  /*wapadd1+size  absolute+auto*/
+            .boxadd3{position: absolute; top:calc(50%-50px); left: calc(50%-50px);}   /*wapadd1+size absolute+CSS3属性calc*/
+            .boxadd4{position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}   /*wapadd1  absolute+translate  不需要宽高*/
+            .boxadd5{font-size: 16px; display: inline-block; vertical-align: middle; line-height: initial; text-align: left;}  /*wapadd2+ line-height*/
+            .boxadd6{display: inline-block; margin: auto; text-align: left;} /*wapadd3+wm writing-mode让文字显示为垂直方向*/
+            .boxadd7{display: inline-block;} /*wapadd4 使用table实现，冗余代码多*/
+            .boxadd8{align-self: center; justify-self: center;} /*wapadd7  使用grid，兼容性不好*/
+        </style>
+    </head>
+    <body>
+        <!-- 水平垂直居中方法 -->
+        <div class="wp wapadd7">
+            <div class="box boxadd8">
+                测试垂直居中方法
+            </div>
+        </div>
+
+        <div class="wp wapadd3">
+            <div class="wm">
+                <div class="box boxadd6">
+                    测试垂直居中方法
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td class="wp wapadd4">
+                        <div class="box boxadd7">
+                            测试垂直居中方法
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="wrap">
+            <div style="background-color: lawngreen;">
+                this is a div. 块级会自动填充父级元素的宽度，独占一行，可以设置width, height, margin, padding
+            </div>
+            <span style="background-color: khaki; padding: 10px;">
+                span. 内联元素宽度随内容变化，不可设置宽高，margin只有水平有效，padding都有效
+            </span>
+            <div style="display: inline-block; background-color: red;">
+                div->inline-block
+            </div><span style="background-color:lightcoral; display: inline-block; width: 300px; padding: 10px; margin: 10px;">   <!-- 去除标签之间的间隙，可以去掉行内之间的间隙 -->
+                span->inline-block. 内联块级既有块级的width, height, margin, padding属性，又有内联的同行属性
+            </span>
+        </div>
+    </body>
+</html>

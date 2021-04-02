@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document下拉菜单选择</title>
+  <style type="text/css"> 
+    *{margin:0; padding:0;}
+    #select{width:200px; margin: 10px auto;}
+    #select cite{display:block; width: 200px; height: 30px; line-height: 30px; border: 1px solid #666666; text-align: center; cursor: pointer;}
+    #select ul{ width:200px; border: 1px solid #666666; list-style: none; display: none;}
+    #select ul li {width:200px; height: 30px; line-height: 30px; text-align: center;}
+  </style>
+  <script>
+    var index=-1;
+    window.onload=function(){
+      var cite = document.getElementById("select").getElementsByTagName("cite")[0],
+          ul = document.getElementById("select").getElementsByTagName("ul")[0],
+          li_list = ul.getElementsByTagName("li");
+      cite.onclick = function(event){
+        event = event || window.event;
+        if(event.stopPropagation){
+          event.stopPropagation();
+        }else{
+          event.cancelBubble;
+        }
+        ul.style.display = "block";
+        document.onkeyup = function(event){
+          event = event || window.event;
+          if(event.keyCode==40)
+          {
+            index++;
+            if(index==0)
+            {
+              li_list[index].style.background = "gray";
+            }
+            else if(index == li_list.length)
+            {
+              li_list[index-1].style.background = "none";
+              index=0;
+              li_list[index].style.background = "gray";
+            }
+            else{
+              li_list[index-1].style.background = "none";
+              li_list[index].style.background = "gray";
+            }
+          }
+          if(event.keyCode==38)
+          {
+            index--;
+            if(index==-1)
+            {
+              li_list[index+1].style.background = "none";
+              index=li_list.length-1;
+              li_list[index].style.background = "gray";
+            }
+            else{
+              li_list[index+1].style.background = "none";
+              li_list[index].style.background = "gray";
+            }
+          }
+          if(event.keyCode==13)
+          {
+            cite.innerHTML = li_list[index].innerHTML;
+            ul.style.display = "none";
+          }
+        }
+      }
+      for(var i=0; i<li_list.length; i++)
+      {
+        li_list[i].onmouseover = function(){
+          this.style.background = "gray";
+        }
+        li_list[i].onmouseout = function(){
+          this.style.background = "none";
+        }
+        li_list[i].onclick = function(){
+          cite.innerHTML = this.innerHTML;
+          ul.style.display = "none";
+        }
+      }
+      document.onclick = function(){
+        ul.style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="select">
+    <cite>请选择浏览器</cite>
+    <ul>
+      <li>Chrome</li>
+      <li>360浏览器</li>
+      <li>百度</li>
+      <li>搜狗</li>
+      <li>火狐</li>
+    </ul>
+  </div>
+</body>
+</html>

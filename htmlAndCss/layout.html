@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两栏布局</title>
+    <style>
+        .left1{background-color: antiquewhite; width: 200px; height: 200px; float: left;}
+        .right1{background-color: aqua; height: 200px;}
+
+        .box2{display: flex;}
+        .left2{background-color: antiquewhite; width: 200px; height: 200px;}
+        .right2{background-color: aqua; height: 200px; flex: 1;}
+
+        .left3{background-color: brown; float: left; height: 200px;}
+        .right3{background-color: burlywood; height: 200px; overflow: hidden;}
+
+        .box4{display: flex;}
+        .left4{background-color: antiquewhite; height: 200px;}
+        .right4{background-color: aqua; height: 200px; flex: 1;}
+    </style>
+</head>
+<body>
+    <h3>左侧固定右侧自适应</h3>
+    <div>
+        <div class="left1">left</div>
+        <div class="right1">right: 使用float</div>
+    </div>
+    <div class="box2">
+        <div class="left2">left</div>
+        <div class="right2">right: 使用flex</div>
+    </div>
+    <h3>两列均自适应</h3>
+    <div>
+        <div class="left3">left</div>
+        <div class="right3">right: 使用float</div>
+    </div>
+    <div class="box4">
+        <div class="left4">left</div>
+        <div class="right4">right: 使用flex</div>
+    </div>
+</body>
+</html>

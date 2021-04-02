@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkcookies</title>
+    <script type="text/javascript">
+        function check_cookies() {
+            let text = "";
+            if(navigator.cookieEnabled == true){
+                text="cookie已经启用";
+            }else{
+                text="cookie没有启用";
+            }
+            document.getElementById("test_cookie").innerHTML = text;
+        }
+
+        function test_onchange() {
+            let d = document.getElementById("test_onchange");
+            d.value = d.value.toUpperCase();
+        }
+
+        function test_onfocus(d) {
+            // let d = document.getElementById("test_onchange");
+            d.style.backgroundColor = "red";
+        }
+    </script>
+</head>
+<body onload="check_cookies()">
+<div>
+    <p>
+        1. onload事件可用于检测访问者的浏览器类型和浏览器版本，然后基于该信息加载网页的恰当版本；
+        onload和onunload实践可用于处理cookie。
+    </p>
+    <p id="test_cookie">
+
+    </p>
+</div>
+<div >
+    2. onchange事件和输入字段验证结合使用 <br /><br />
+    3. onfocus 当获取焦点时调用 <br /><br />
+    输入：<input type="text" id="test_onchange" placeholder="input" onchange="test_onchange()" onfocus="test_onfocus(this)">
+
+</div>
+<div>
+    4. addEventListener 事件监听  removeEventListener 删除<br /><br />
+
+    5. 事件冒泡和事件捕获，两个相当于相反的过程，事件冒泡从最精确的目标到最不确定的对象(doucument),以及如果阻止事件冒泡， <a href="18eventhandle.html">例子见</a>
+
+</div>
+</body>
+</html>

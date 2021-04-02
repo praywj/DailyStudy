@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>跨浏览器事件处理程序</title>
+  <script src="js/event.js"></script>
+  <script src="js/script.js"></script>
+</head>
+<body>
+  <code>
+    // 事件处理程序 <br />
+    var eventUtil = {<br />
+    addHandle:function(element, type, handle){<br />
+    if(element.addEventListener){<br />
+    element.addEventListener(type, handle, false);<br />
+    }<br />
+    else if(element.attachEvent){<br />
+    element.attachEvent("on" + type, handle);<br />
+    }<br />
+    else{<br />
+    element["on" + type] = handle;<br />
+    }<br />
+    },<br />
+    <br />
+    removeHandle:function(element, type, handle){<br />
+    if(element.removeEventListener){<br />
+    element.removeEventListener(type, handle, false);<br />
+    }<br />
+    else if(element.detachEvent){<br />
+    element.detachEvent("on" + type, handle);<br />
+    }<br />
+    else{<br />
+    element["on" + type] = null;<br />
+    }<br />
+    },<br />
+    <br />
+    getEvent:function(event){<br />
+    return event? event:window.event;<br />
+    },<br />
+    getType:function(event){<br />
+    return event.type;<br />
+    },<br />
+    getTarget:function(event){<br />
+    return event.target || event.srcElement;<br />
+    },<br />
+    stopPropagation:function(event){<br />
+    if(event.stopPropagation){<br />
+    event.stopPropagation();<br />
+    }<br />
+    else{<br />
+    event.cancelBubble = true;<br />
+    }<br />
+    },<br />
+    preventDefault:function(event){<br />
+    if(event.preventDefault){<br />
+    event.preventDefault();<br />
+    }<br />
+    else{<br />
+    event.returnValue = false;<br />
+    }<br />
+    }<br />
+    }<br />
+
+  </code>
+  <div>
+    <code>
+      input
+    </code>
+  </div>
+  <div id="box">
+    <input type="button" id="btn1" value="按钮1">
+    <input type="button" id="btn2" value="按钮2">
+    <input type="button" id="btn3" value="按钮3">
+    <a href="./20keyevent.html"> Go </a>
+  </div>
+  <script>
+    //DOM0级
+    var button = document.getElementById("btn1");
+    button.onclick = function(){
+      alert("DOM0级");
+    }
+  </script>
+</body>
+</html>

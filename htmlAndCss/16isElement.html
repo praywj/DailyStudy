@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>isElement Judge</title>
+</head>
+<body>
+	<div id="container">
+		这是一个元素节点 
+	</div>
+	<!-- 这是一个注释节点 -->
+	<script>
+
+	    // 不严谨，比如自己创建一个nodeType为1的对象,则有漏洞
+		// var isElement = function(obj){
+		// 	return !!obj && obj.nodeType==1;
+		// }
+		var a={
+			nodeType:1
+		}
+		var testDiv = document.createElement('div');
+		var isElement = function(obj){
+			if(obj && obj.nodeType==1){ // 不能过滤 a
+				if(window.Node && (obj instanceof Node)){  //如果是IE9,则判定其是否是Node的实例
+					return true;
+				}
+				try{
+				testDiv.appendChild(obj);  //过滤a
+				testDiv.removeChild(obj);
+
+				}catch(e){
+					return false;
+				}
+				return true;         // 如果没有错误
+			}
+			return false;
+		}
+		console.log(isElement(document.getElementById("container")));
+		console.log(isElement(a));
+		console.log(isElement(document.getElementById("container").nextSibling));
+	</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>position</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.nav{
+		width: 160px;
+		height:auto;
+		position: fixed;
+		left: 0;
+		top:50%;
+		margin-top:-80px;
+		font-family: "Miscrosoft Yahei"
+	}
+	.nav-li{
+		width: 160px;
+		height: auto;
+		border-bottom: 1px solid #fff;
+		background: #333;
+		text-align: center;
+		line-height: 40px;
+		color: #fff;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.one{
+		width: 160px;
+		height: 40px;
+	}
+	.nav-li ul{
+		width: 100%;
+		height: auto;
+		background: #fff;
+		display: none;
+	}
+	.nav-li ul li{
+		width: 100%;
+		height: 40px;
+		border-bottom: 1px dashed #666;
+		color:#000;
+		text-align: center;
+		line-height: 40px;
+		position: relative;
+	}
+	.nav-li:hover ul{
+		display: block;
+	}
+	.list-3{
+		width:100%;
+		height: auto;
+		position: absolute;
+		left: 160px;
+		top:0;
+		display: none;
+	}
+	.list-3-1{
+		width: 100%;
+		height: 40px;
+		background: #ccc;
+		border-bottom: 1px solid #fff;
+		color:#000;
+		text-align: center;
+		line-height: 40px;
+	}
+	.nav-li ul li:hover .list-3{
+		display: block;
+	}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="nav">
+			<div class="nav-li">
+				<div class="one">你好啊朋友</div>
+				<ul>
+					<li>
+						11111
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+					<li>
+						22222
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="nav-li">
+				<div class="one">你好啊朋友</div>
+				<ul>
+					<li>
+						11111
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+					<li>
+						22222
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="nav-li">
+				<div class="one">你好啊朋友</div>
+				<ul>
+					<li>
+						11111
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+					<li>
+						22222
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="nav-li">
+				<div class="one">你好啊朋友</div>
+				<ul>
+					<li>
+						11111
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+					<li>
+						22222
+						<div class="list-3">
+							<div class="list-3-1">
+								三级栏目
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

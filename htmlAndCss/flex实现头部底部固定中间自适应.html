@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            padding: 0; margin: 0;
+        }
+        html, body {height: 100%;}
+        .demon {display: flex; height: 100vh; flex-direction: column;}
+        .fixTop {height: 100px; color: white; width: 100%; background-color: tomato;}
+        .fixBottom {height: 100px; color: white; width: 100%; background-color: tomato;}
+        .container {flex: 1; overflow: scroll; width: 100%;}
+        .show {height: 300px; background-color: thistle; margin: 20px;}
+    </style>
+</head>
+<body>
+    <div class="demon">
+        <div class="fixTop">
+            <span>顶部文字</span>
+        </div>
+        <div class="container">
+            <p class="show">hahaha</p>
+            <p class="show">hahaha</p>
+            <p class="show">hahaha</p>
+        </div>
+        <div class="fixBottom">
+            <span>底部文字</span>
+        </div>
+    </div>
+</body>
+</html>
